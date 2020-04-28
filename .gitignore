@@ -1,3 +1,23 @@
+*.iml
+*.dill
+/.idea
+/.gradle
+/gradle
+/target
+/build
+/coverage
+
+/ide-lib
+/dist
+/node_modules
+/npm-debug.log
+/out
+bongo-stash/
+
+.eslintcache
+/logs
+*.tokens
+
 # Compiled class file
 *.class
 

@@ -40,16 +40,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/css/*", "/js/*",
-                        "/h2-console/*", "/devTest"
+                        "/", "index",
+                        "/login",
+                        "/register",
+                        "/css/*",
+                        "/js/*",
+                        "/h2-console/*"
                 )
-                .permitAll()
-                .antMatchers("/", "index").authenticated()
-                .antMatchers("/admin/**").hasAnyRole(ADMIN.name(), SUPER_ADMIN.name())
+                    .permitAll()
+                .antMatchers("/home")
+                    .authenticated()
+                .antMatchers("/admin/**")
+                    .hasAnyRole(ADMIN.name(), SUPER_ADMIN.name())
                 .and()
                 .formLogin()
-                .and()
-                .logout().permitAll();
+                    .loginPage("/login")
+                    .loginProcessingUrl("/authenticateTheUser")
+                    .defaultSuccessUrl("/")
+                    .and()
+                    .logout()
+                    .permitAll();
     }
 
     @Override

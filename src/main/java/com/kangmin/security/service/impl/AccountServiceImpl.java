@@ -7,7 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -25,10 +27,13 @@ public class AccountServiceImpl implements AccountService {
             return each;
         });
     }
-//    @Override
-//    public Optional<List<Account>> getAll() {
-//        return Optional.of(accountDao.findAll());
-//    }
+
+    @Override
+    public List<Account> getAll() {
+        return accountDao.findAll().stream()
+            .peek(each -> each.setPassword("*******"))
+            .collect(Collectors.toList());
+    }
 
     @Override
     public Optional<Account> createAccount(final Account account) {

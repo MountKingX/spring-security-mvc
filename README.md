@@ -9,5 +9,6 @@ Aim for Spring MVC - form based authentication, not particular for REST-ful desi
 * JPA for Dao layer - e.g. AccountDao extends JpaRepository<Account, String>
 * `gradle checkstyleMain` for coding styles
 * originally created using java 11
+* updated api/v2/accounts to use Page interface
 
-last updated on April-28-2020
+last updated on Nov-01-2020
